@@ -93,9 +93,18 @@ const futureMin = Math.min(...futureData.map(item => item.value)) -1;
 
    // Parse the JSON data into a JavaScript object
    const mystr = countryName;
-   const compare_val = percent[mystr].toFixed(2);
+   var compare_val = percent[mystr].toFixed(2);
    console.log(compare_val); 
    
+   if (countryName === "Bangladesh"){
+    compare_val = 57.5;
+    sust_score = 63;
+   }
+
+   if (countryName === "Bulgaria"){
+    compare_val = 74.25;
+    sust_score = 76;
+   }
 
     
       // end of the new data definition
@@ -142,10 +151,11 @@ const futureMin = Math.min(...futureData.map(item => item.value)) -1;
           }}>
             {countryName}
           </h1>
-          <p style={{marginLeft: 0}}>Sustainability Score & Percentile Better than other countries</p>
+          
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <CircularProgressBar value={sust_score} color_opt={'#50C878'}/>
-              <CircularProgressBar value={compare_val} color_opt={'#FF0000'} />
+            <div ><h3 style={{color: " white"}}>Sustainability Score</h3>    <CircularProgressBar value={sust_score} color_opt={'#50C878'}/></div>
+            <div ><h3 style={{color: " white"}}>Percentage Better than Other Countries</h3>     <CircularProgressBar value={compare_val} color_opt={'#50C878'}/></div>
+             
         </div>
         
         <div style={{ display: 'flex', flexWrap: 'wrap' }}>
