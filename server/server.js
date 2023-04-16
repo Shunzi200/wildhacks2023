@@ -5,14 +5,14 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-//const mysql = require('mysql');
+const mysql = require('mysql');
 
-/*
+
 const connection = mysql.createConnection({
-  host: 'your-database-hostname',
-  user: 'your-database-username',
-  password: 'your-database-password',
-  database: 'your-database-name'
+  host: 'wildhacks.c5jkc6kgjvet.us-east-2.rds.amazonaws.com',
+  user: 'admin',
+  password: 'BluZip60*',
+  database: 'TreeDB'
 });
 
 connection.connect((err) => {
@@ -36,7 +36,7 @@ app.get('/api/data/:variable', (req, res) => {
     }
   });
 });
-*/
+
 
 app.get('/api/data/:variable', (req, res) => {
   const { variable } = req.params;
@@ -59,4 +59,4 @@ app.listen(PORT, () => {
 });
 
 //end mysql connection
-//connection.end();
+connection.end();
