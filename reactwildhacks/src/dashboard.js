@@ -77,7 +77,7 @@ function page1() {
   <div style={{ flex: 1, marginRight: '20px' }}>
     <div style={{ border: '1px solid #ccc', padding: '10px' }}>
       <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '10px' }}>
-        Predicted
+        Predicted next 10 years (% forested land)
       </div>
       <LineChart
         width={500}
@@ -99,7 +99,7 @@ function page1() {
   <div style={{ flex: 1, marginLeft: '20px' }}>
     <div style={{ border: '1px solid #ccc', padding: '10px' }}>
       <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '10px' }}>
-        Predicted
+        Past Data (% forested land)
       </div>
       <LineChart
         width={500}
