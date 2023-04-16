@@ -16,18 +16,18 @@ function App() {
     setCurrentPage(1);
   };
 
-  const handlePageSwitchTwo = () => {
-    
-    axios.get(`/api/data/${countryName}`)
-    .then(response => {
-      console.log(response.data);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-
+  const handlePageSwitchTwo = (currentCountryName) => {
+    axios.get(`/api/data/${currentCountryName}`)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  
     setCurrentPage(2);
   };
+  
 
   return currentPage === 1 ? (
     <Page1

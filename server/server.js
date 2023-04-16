@@ -50,6 +50,10 @@ app.get("/api", (req, res) => {
   res.json({ message: "Hello!" });
 });
 
+app.all('*', (req, res) => {
+  res.status(404).json({ message: 'Route not found' });
+});
+
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
