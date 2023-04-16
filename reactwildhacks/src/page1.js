@@ -5,7 +5,7 @@ import background1 from './assets/tree2.png';
 import countries from './countries.js';
 import TabBar from './tabBar.js'
 
-function Page1() {
+function Page1({ onSwitchPage, onSwitchPage2 , countryName, setCountryName }) {
   const [searchResults, setSearchResults] = useState([]);
 
   const handleSearch = (query) => {
@@ -17,7 +17,7 @@ function Page1() {
 
   return (
     <div>
-      <TabBar showSearchBar={false} />
+      <TabBar showSearchBar={false} onSwitchPage={onSwitchPage} />
 
       <div style={{ 
         position: 'relative', 
@@ -58,14 +58,8 @@ function Page1() {
           }}>
             Using data to <br/> solve climate change
           </h1>
-          <SearchBar onSearch={handleSearch} countries={countries} />
-          {searchResults.length > 0 &&
-            <div className="search-results">
-              {searchResults.map((result) => (
-                <div key={result}>{result}</div>
-              ))}
-            </div>
-          }
+          <SearchBar onSearch={handleSearch} countries={countries} onSwitchPage={onSwitchPage} onSwitchPage2={onSwitchPage2} countryName={countryName} setCountryName={setCountryName}/>
+        
         </div>
       </div>
     </div>

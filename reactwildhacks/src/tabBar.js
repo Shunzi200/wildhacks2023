@@ -3,7 +3,7 @@ import logo from './assets/noBackgroundLogo.png';
 import countries from './countries.js';
 import SearchBar from './searchBar';
 
-function TabBar({ showSearchBar }) {
+function TabBar({ showSearchBar, onSwitchPage, onSwitchPage2, countryName, setCountryName}) {
   const [searchResults, setSearchResults] = useState([]);
 
   const handleSearch = (query) => {
@@ -56,6 +56,7 @@ function TabBar({ showSearchBar }) {
         </div>
         <div className="home-button" style={{ marginLeft: '20px' }}>
           <button
+            onClick={onSwitchPage}
             style={{
               backgroundColor: 'white',
               color: '#07bbf2',
@@ -76,26 +77,8 @@ function TabBar({ showSearchBar }) {
       </div>
       {showSearchBar && (
         <div style={{ position: 'relative', zIndex: 9999 }}>
-          <SearchBar onSearch={handleSearch} countries={countries} />
-          {searchResults.length > 0 && (
-            <div
-              className="search-results"
-              style={{
-                position: 'absolute',
-                top: '100%',
-                left: 0,
-                backgroundColor: 'white',
-                zIndex: 1,
-                boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-                borderRadius: '4px',
-                padding: '10px',
-              }}
-            >
-              {searchResults.map((result) => (
-                <div key={result}>{result}</div>
-              ))}
-            </div>
-          )}
+          <SearchBar onSearch={handleSearch} countries={countries} onSwitchPage={onSwitchPage} onSwitchPage2={onSwitchPage2} countryName={countryName} setCountryName={setCountryName}/>
+         
         </div>
       )}
     </div>
