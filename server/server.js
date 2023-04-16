@@ -9,10 +9,19 @@ const app = express();
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
-  host: 'your-database-hostname',
-  user: 'your-database-username',
-  password: 'your-database-password',
-  database: 'your-database-name'
+  host: 'wildhacks.c5jkc6kgjvet.us-east-2.rds.amazonaws.com',
+  user: 'admin',
+  password: 'BluZip60*',
+  database: 'TreeDB'
+});
+
+app.get('/CountryData', (req, res) => {
+  connection.connect(function(err) {
+      connection.query(`SELECT * FROM TreeDB.CountryData`, function(err, result, fields) {
+          if (err) res.send(err);
+          if (result) res.send(result);
+      });
+  });
 });
 
 connection.connect((err) => {
@@ -23,30 +32,10 @@ connection.connect((err) => {
   }
 });
 
-// Example query
-connection.query('SELECT * FROM users', (err, results, fields) => {
-  if (err) {
-    console.error('Error querying database:', err);
-  } else {
-    console.log('Results:', results);
-  }
-});
-
-
-app.get('/api/data/:variable', (req, res) => {
-  const variable = req.params.variable;
-  // Use the variable to fetch data from your database or other data source
-  res.json({ data: variable });
-});
-
-
-app.get("/api", (req, res) => {
-    res.json({ message: "Hello!" });
-  });
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
 
 //end mysql connection
-connection.end();
+//connection.end();
