@@ -1,11 +1,12 @@
 import React from 'react';
 //import SearchBar from './searchBar';
-//import background1 from './assets/tree2.png';
+//import background1 from './assets/tree.png';
 //import background2 from './assets/background2.jpg';
-import background2 from './assets/dashbackground.jpg';
+import background2 from './assets/tree2.png';
 import CircularProgressBar from './CircularProgressBar.js';
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend } from "recharts";
 import TabBar from './tabBar.js'
+
 function dashboard({ onSwitchPage, onSwitchPage2, countryName, setCountryName }) {
     const sust_score = 75; // to be changed
     const compare_val = 49; // to be changed
@@ -45,7 +46,7 @@ function dashboard({ onSwitchPage, onSwitchPage2, countryName, setCountryName })
           alt="Background"
           style={{
             position: 'absolute',
-            top: 0,
+            top: 300,
             left: 0,
             width: '100%',
             height: 'auto',
@@ -77,7 +78,7 @@ function dashboard({ onSwitchPage, onSwitchPage2, countryName, setCountryName })
         
         <div style={{ display: 'flex', flexWrap: 'wrap' }}>
   <div style={{ flex: 1, marginRight: '20px' }}>
-    <div style={{ border: '1px solid #ccc', padding: '10px' }}>
+    <div style={{ border: '1px solid #ccc', padding: '10px', backgroundColor: '#ffffff' }}>
       <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '10px' }}>
         Predicted next 10 years (% forested land)
       </div>
@@ -99,7 +100,7 @@ function dashboard({ onSwitchPage, onSwitchPage2, countryName, setCountryName })
     </div>
   </div>
   <div style={{ flex: 1, marginLeft: '20px' }}>
-    <div style={{ border: '1px solid #ccc', padding: '10px' }}>
+    <div style={{ border: '1px solid #ccc', padding: '10px' , backgroundColor: '#ffffff', }}>
       <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '10px' }}>
         Past Data (% forested land)
       </div>

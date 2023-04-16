@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import SearchBar from './searchBar';
-import background1 from './assets/tree2.png';
+import background1 from './assets/tree1.png';
 import countries from './countries.js';
 import TabBar from './tabBar.js'
 
@@ -33,7 +33,7 @@ function Page1({ onSwitchPage, onSwitchPage2 , countryName, setCountryName }) {
           alt="Background"
           style={{
             position: 'absolute',
-            top: 10,
+            bottom: 0,
             left: 0,
             width: '100%',
             height: 'auto',
@@ -62,7 +62,8 @@ function Page1({ onSwitchPage, onSwitchPage2 , countryName, setCountryName }) {
         
         </div>
       </div>
-    </div>
+      </div>
+
   );
 }
 

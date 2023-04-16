@@ -16,6 +16,7 @@ function CircularProgressBar({ value, color_opt }) {
           pathColor: color_opt,
           textColor: 'green',
           trailColor: '#d6d6d6',
+          
         })}
       />
     </div>
