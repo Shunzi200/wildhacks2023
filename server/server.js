@@ -5,14 +5,14 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-//const mysql = require('mysql');
+const mysql = require('mysql');
 
-/*
+
 const connection = mysql.createConnection({
-  host: 'your-database-hostname',
-  user: 'your-database-username',
-  password: 'your-database-password',
-  database: 'your-database-name'
+  host: 'wildhacks.c5jkc6kgjvet.us-east-2.rds.amazonaws.com',
+  user: 'admin',
+  password: 'BluZip60*',
+  database: 'TreeDB'
 });
 
 connection.connect((err) => {
@@ -23,7 +23,17 @@ connection.connect((err) => {
   }
 });
 
+app.get('/CountryData', (req, res) => {
+  con.connect(function(err) {
+      con.query(`SELECT * FROM TreeDB.CountryData`, function(err, result, fields) {
+          if (err) res.send(err);
+          if (result) res.send(result);
+      });
+  });
+});
+console.log(res);
 
+/*
 app.get('/api/data/:variable', (req, res) => {
   const { variable } = req.params;
   connection.query(`SELECT * FROM your-table-name WHERE your-column-name = ?`, [variable], (err, results, fields) => {
@@ -36,7 +46,7 @@ app.get('/api/data/:variable', (req, res) => {
     }
   });
 });
-*/
+
 
 app.get('/api/data/:variable', (req, res) => {
   const { variable } = req.params;
@@ -45,7 +55,7 @@ app.get('/api/data/:variable', (req, res) => {
   res.json({ data: results });
 });
 
-
+/*
 app.get("/api", (req, res) => {
   res.json({ message: "Hello!" });
 });
@@ -56,7 +66,7 @@ app.all('*', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
-});
+});*/
 
 //end mysql connection
-//connection.end();
+//connection.end();*/
