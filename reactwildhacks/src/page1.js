@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import SearchBar from './searchBar';
-import background1 from './assets/tree2.png';
+import background1 from './assets/tree1.png';
 import countries from './countries.js';
 import TabBar from './tabBar.js'
 

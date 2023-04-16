@@ -3,7 +3,7 @@ import Page1 from './page1';
 import Page2 from './dashboard';
 
 function App() {
-  const [countryName, setCountryName] = useState(" a");
+  const [countryName, setCountryName] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
   const handlePageSwitchOne = () => {
