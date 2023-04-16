@@ -4,7 +4,7 @@ import React from 'react';
 //import background2 from './assets/background2.jpg';
 import background2 from './assets/tree2.png';
 import CircularProgressBar from './CircularProgressBar.js';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
+import { LineChart, Line, XAxis, YAxis, Tooltip, Legend } from "recharts";
 import TabBar from './tabBar.js'
 
 function dashboard({ onSwitchPage, onSwitchPage2, countryName, setCountryName }) {
