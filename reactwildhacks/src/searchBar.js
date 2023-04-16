@@ -11,6 +11,7 @@ const SearchBar = ({ onSearch, countries , onSwitchPage, onSwitchPage2, countryN
 
   const handleSearch = () => {
     onSearch(query);
+ 
   };
 
   let filteredCountries = [];
@@ -41,8 +42,10 @@ const SearchBar = ({ onSearch, countries , onSwitchPage, onSwitchPage2, countryN
             <ul>
               {filteredCountries.map((country) => (
                  <div key={country}  onClick={() => {
-                  onSwitchPage2(country);
                   setCountryName(country);
+                  onSwitchPage2(country);
+                  
+                  
                 }} style={{ cursor: "pointer" }}>
                  {country}
                </div>

@@ -5,9 +5,9 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 
+//const mysql = require('mysql');
 
-const mysql = require('mysql');
-
+/*
 const connection = mysql.createConnection({
   host: 'your-database-hostname',
   user: 'your-database-username',
@@ -23,30 +23,40 @@ connection.connect((err) => {
   }
 });
 
-// Example query
-connection.query('SELECT * FROM users', (err, results, fields) => {
-  if (err) {
-    console.error('Error querying database:', err);
-  } else {
-    console.log('Results:', results);
-  }
-});
-
 
 app.get('/api/data/:variable', (req, res) => {
-  const variable = req.params.variable;
-  // Use the variable to fetch data from your database or other data source
-  res.json({ data: variable });
+  const { variable } = req.params;
+  connection.query(`SELECT * FROM your-table-name WHERE your-column-name = ?`, [variable], (err, results, fields) => {
+    if (err) {
+      console.error('Error querying database:', err);
+      res.status(500).json({ message: 'Internal server error' });
+    } else {
+      console.log('Results:', results);
+      res.json({ data: results });
+    }
+  });
+});
+*/
+
+app.get('/api/data/:variable', (req, res) => {
+  const { variable } = req.params;
+  const results = variable;
+  console.log('Results:', results);
+  res.json({ data: results });
 });
 
 
 app.get("/api", (req, res) => {
-    res.json({ message: "Hello!" });
-  });
+  res.json({ message: "Hello!" });
+});
+
+app.all('*', (req, res) => {
+  res.status(404).json({ message: 'Route not found' });
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
 
 //end mysql connection
-connection.end();
+//connection.end();
