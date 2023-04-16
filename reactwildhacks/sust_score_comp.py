@@ -27,14 +27,12 @@ avgDiff = sum(diffColumn) / len(diffColumn)
 print('Average difference:', avgDiff)
 
 
-
+n = len(diffColumn)
 my_dict = {}
 for i in range(len(diffColumn)):
-     values = diffColumn
-     values.sort()
-     rank = bisect.bisect_right(values, diffColumn[i])
-     equal = 100*rank / (len(values) - 1)
-     my_dict[results[i]['Country Name']] = equal
+     rank = sorted(diffColumn).index(diffColumn[i]) + 1
+     percentile = (rank / n) * 100
+     my_dict[results[i]['Country Name']] = percentile
 
 
 

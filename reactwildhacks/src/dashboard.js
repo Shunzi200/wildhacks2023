@@ -96,18 +96,11 @@ const futureMin = Math.min(...futureData.map(item => item.value)) -1;
    var compare_val = percent[mystr].toFixed(2);
    console.log(compare_val); 
    
-   if (countryName === "Bangladesh"){
-    compare_val = 57.5;
-    sust_score = 63;
-   }
-
-   if (countryName === "Bulgaria"){
-    compare_val = 74.25;
-    sust_score = 76;
-   }
-
-    
       // end of the new data definition
+
+    if (sust_score < 0){
+        sust_score = 30;
+    }
 
     return (
       <div><TabBar showSearchBar={true} onSwitchPage={onSwitchPage} onSwitchPage2={onSwitchPage2} countryName={countryName}setCountryName={setCountryName} />
