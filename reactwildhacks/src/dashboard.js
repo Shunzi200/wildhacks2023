@@ -5,8 +5,8 @@ import React from 'react';
 import background2 from './assets/dashbackground.jpg';
 import CircularProgressBar from './CircularProgressBar.js';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
-
-function page1() {
+import TabBar from './tabBar.js'
+function dashboard({ onSwitchPage, onSwitchPage2, countryName, setCountryName }) {
     const sust_score = 75; // to be changed
     const compare_val = 49; // to be changed
 
@@ -29,6 +29,7 @@ function page1() {
       // end of graph data stuff
     
     return (
+      <div><TabBar showSearchBar={true} onSwitchPage={onSwitchPage} onSwitchPage2={onSwitchPage2} countryName={countryName}setCountryName={setCountryName} />
       <div style={{ 
         position: 'relative', 
         backgroundColor: '#07bbf2', 
@@ -38,6 +39,7 @@ function page1() {
         justifyContent: 'center',
         alignItems: 'center'
       }}>
+        
         <img
           src={background2}
           alt="Background"
@@ -66,7 +68,7 @@ function page1() {
             textAlign: 'center',
             margin: 0,
           }}>
-            FRANCE
+            {countryName}
           </h1>
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <CircularProgressBar value={sust_score} color_opt={'#50C878'}/>
@@ -119,7 +121,7 @@ function page1() {
     </div>
   </div>
 </div>
-
+</div>
   
         </div>
       </div>
@@ -128,4 +130,4 @@ function page1() {
   
   
 
-export default page1;
+export default dashboard;

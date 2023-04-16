@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import "./searchBar.css";
 
-const SearchBar = ({ onSearch, countries }) => {
+const SearchBar = ({ onSearch, countries , onSwitchPage, onSwitchPage2, countryName, setCountryName }) => {
   const [query, setQuery] = useState("");
 
   const handleInputChange = (event) => {
@@ -40,7 +40,13 @@ const SearchBar = ({ onSearch, countries }) => {
           <div className="search-results">
             <ul>
               {filteredCountries.map((country) => (
-                 <div key={country}>{country}</div>
+                 <div key={country}  onClick={() => {
+                  onSwitchPage2(country);
+                  setCountryName(country);
+                }} style={{ cursor: "pointer" }}>
+                 {country}
+               </div>
+               
               ))}
             </ul>
           </div>
