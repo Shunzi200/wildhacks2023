@@ -1,34 +1,79 @@
 import React from 'react';
-//import SearchBar from './searchBar';
-//import background1 from './assets/tree.png';
-//import background2 from './assets/background2.jpg';
+//import { useState, useEffect } from 'react'; //
 import background2 from './assets/tree2.png';
 import CircularProgressBar from './CircularProgressBar.js';
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend } from "recharts";
 import TabBar from './tabBar.js'
+import data2 from './wildhacks_data_json.json';
 
 function dashboard({ onSwitchPage, onSwitchPage2, countryName, setCountryName }) {
     const sust_score = 75; // to be changed
     const compare_val = 49; // to be changed
 
-    // for the graph, to be changed 
-    const data = [
-        { name: "Jan", value: 400 },
-        { name: "Feb", value: 300 },
-        { name: "Mar", value: 200 },
-        { name: "Apr", value: 278 },
-        { name: "May", value: 189 },
-        { name: "Jun", value: 239 },
-        { name: "Jul", value: 349 },
-        { name: "Aug", value: 178 },
-        { name: "Sep", value: 209 },
-        { name: "Oct", value: 394 },
-        { name: "Nov", value: 456 },
-        { name: "Dec", value: 398 }
-      ];
+      // end of graph data stuff that will be deleted
+      // start of new graph data
 
-      // end of graph data stuff
+    const afghanistanData = data2.filter(item => item["Country Name"] == countryName);
+    const countryData = afghanistanData.map(item => {
+        return {
+            "2022": item["2022"],
+            "2021": item["2021"],
+            "2020": item["2020 [YR2020]"],
+            "2019": item["2019 [YR2019]"],
+            "2018": item["2018 [YR2018]"],
+            "2017": item["2017 [YR2017]"],
+            "2016": item["2016 [YR2016]"],
+            "2015": item["2015 [YR2015]"],
+            "2014": item["2014 [YR2014]"],
+            "2013": item["2013 [YR2013]"],
+          "2023": item["2023"],
+          "2024": item["2024"],
+          "2025": item["2025"],
+          "2026": item["2026"],
+          "2027": item["2027"],
+          "2028": item["2028"],
+          "2029": item["2029"],
+          "2030": item["2030"],
+          "2031": item["2031"]
+          
+        };
+      });
+
+    const futureData = [
+        { name: "2023", value: countryData[0]["2023"] },
+        { name: "2024", value: countryData[0]["2024"] },
+        { name: "2025", value: countryData[0]["2025"] },
+        { name: "2026", value: countryData[0]["2026"] },
+        { name: "2027", value: countryData[0]["2027"] },
+        { name: "2028", value: countryData[0]["2028"] },
+        { name: "2029", value: countryData[0]["2029"] },
+        { name: "2030", value: countryData[0]["2030"] },
+        { name: "2031", value: countryData[0]["2031"] }
+    ];
+
+    const pastData = [
+
+        { name: "2013", value: countryData[0]["2013"] },
+        { name: "2014", value: countryData[0]["2014"] },
+        { name: "2015", value: countryData[0]["2015"] },
+        { name: "2016", value: countryData[0]["2016"] },
+        { name: "2017", value: countryData[0]["2017"] },
+        { name: "2018", value: countryData[0]["2018"] },
+        { name: "2019", value: countryData[0]["2019"] },
+        { name: "2020", value: countryData[0]["2020"] }, 
+        { name: "2021", value: countryData[0]["2021"] },
+        { name: "2022", value: countryData[0]["2022"] }
+
+    ];
+   
+    const maxVal = Math.max(...futureData.map(item => item.value));
+    const maxVal2 = Math.max(...pastData.map(item => item.value));
+
     
+
+    
+      // end of the new data definition
+
     return (
       <div><TabBar showSearchBar={true} onSwitchPage={onSwitchPage} onSwitchPage2={onSwitchPage2} countryName={countryName}setCountryName={setCountryName} />
       <div style={{ 
@@ -85,13 +130,15 @@ function dashboard({ onSwitchPage, onSwitchPage2, countryName, setCountryName })
       <LineChart
         width={500}
         height={300}
-        data={data}
+        data={futureData}
         margin={{ left: -10 }}>
         <XAxis dataKey="name" />
         <YAxis
-          ticks={[data[0].value, data[data.length - 1].value]}
+          range={[0, maxVal2]}
+          //ticks={[data[0].value, data[data.length - 1].value]}
           axisLine={true}
           tickLine={false}
+          
         />
         <Tooltip />
         <Legend />
@@ -107,13 +154,15 @@ function dashboard({ onSwitchPage, onSwitchPage2, countryName, setCountryName })
       <LineChart
         width={500}
         height={300}
-        data={data}
+        data={pastData}
         margin={{ left: -10 }}>
         <XAxis dataKey="name" />
         <YAxis
-          ticks={[data[0].value, data[data.length - 1].value]}
+          range={[0, maxVal]}
+          //ticks={[data[0].value, data[data.length - 1].value]}
           axisLine={true}
           tickLine={false}
+          
         />
         <Tooltip />
         <Legend />
@@ -121,10 +170,13 @@ function dashboard({ onSwitchPage, onSwitchPage2, countryName, setCountryName })
       </LineChart>
     </div>
   </div>
+
 </div>
 </div>
+
   
         </div>
+       
       </div>
     );
   }

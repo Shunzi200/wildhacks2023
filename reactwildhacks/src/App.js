@@ -25,7 +25,7 @@ function App() {
 
 
 
-  const [countryName, setCountryName] = useState("");
+  const [countryName, setCountryName] = useState(" ");
   const [currentPage, setCurrentPage] = useState(1);
 
   const handlePageSwitchOne = () => {
