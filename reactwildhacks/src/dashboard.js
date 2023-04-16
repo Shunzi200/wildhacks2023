@@ -46,7 +46,7 @@ function dashboard({ onSwitchPage, onSwitchPage2, countryName, setCountryName })
           alt="Background"
           style={{
             position: 'absolute',
-            top: 10,
+            top: 300,
             left: 0,
             width: '100%',
             height: 'auto',
@@ -78,7 +78,7 @@ function dashboard({ onSwitchPage, onSwitchPage2, countryName, setCountryName })
         
         <div style={{ display: 'flex', flexWrap: 'wrap' }}>
   <div style={{ flex: 1, marginRight: '20px' }}>
-    <div style={{ border: '1px solid #ccc', padding: '10px' }}>
+    <div style={{ border: '1px solid #ccc', padding: '10px', backgroundColor: '#ffffff' }}>
       <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '10px' }}>
         Predicted next 10 years (% forested land)
       </div>
@@ -100,7 +100,7 @@ function dashboard({ onSwitchPage, onSwitchPage2, countryName, setCountryName })
     </div>
   </div>
   <div style={{ flex: 1, marginLeft: '20px' }}>
-    <div style={{ border: '1px solid #ccc', padding: '10px' }}>
+    <div style={{ border: '1px solid #ccc', padding: '10px' , backgroundColor: '#ffffff', }}>
       <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '10px' }}>
         Past Data (% forested land)
       </div>

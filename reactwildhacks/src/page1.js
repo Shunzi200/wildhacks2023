@@ -33,7 +33,7 @@ function Page1({ onSwitchPage, onSwitchPage2 , countryName, setCountryName }) {
           alt="Background"
           style={{
             position: 'absolute',
-            top: 10,
+            bottom: 50,
             left: 0,
             width: '100%',
             height: 'auto',

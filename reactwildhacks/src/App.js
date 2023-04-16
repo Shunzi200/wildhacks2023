@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Page1 from './page1';
-<<<<<<< HEAD
 import axios from 'axios';
+import Page2 from './dashboard';
 
 function App() {
   const [data, setData] = React.useState(null);
@@ -22,15 +22,9 @@ function App() {
     console.error(error);
   });
 
-  return (
-    <div>
-      <p>{!data ? "Loading..." : data}</p>
-      <Page1 />
-    </div>
-=======
-import Page2 from './dashboard';
 
-function App() {
+
+
   const [countryName, setCountryName] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -56,7 +50,6 @@ function App() {
       countryName={countryName}
       setCountryName={setCountryName} 
     />
->>>>>>> origin/main
   );
 }
 
