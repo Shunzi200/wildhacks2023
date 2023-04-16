@@ -41,6 +41,8 @@ function dashboard({ onSwitchPage, onSwitchPage2, countryName, setCountryName })
       });
 
     const futureData = [
+      { name: "2021", value: countryData[0]["2021"] },
+        { name: "2022", value: countryData[0]["2022"] },
         { name: "2023", value: countryData[0]["2023"] },
         { name: "2024", value: countryData[0]["2024"] },
         { name: "2025", value: countryData[0]["2025"] },
@@ -62,13 +64,19 @@ function dashboard({ onSwitchPage, onSwitchPage2, countryName, setCountryName })
         { name: "2018", value: countryData[0]["2018"] },
         { name: "2019", value: countryData[0]["2019"] },
         { name: "2020", value: countryData[0]["2020"] }, 
-        { name: "2021", value: countryData[0]["2021"] },
-        { name: "2022", value: countryData[0]["2022"] }
+    
 
     ];
    
-    const maxVal = Math.max(...futureData.map(item => item.value));
-    const maxVal2 = Math.max(...pastData.map(item => item.value));
+
+
+    const pastMax = Math.max(...pastData.map(item => item.value)) + 1;
+const pastMin = Math.min(...pastData.map(item => item.value)) -1;
+const futureMax = Math.max(...futureData.map(item => item.value))  + 1;
+const futureMin = Math.min(...futureData.map(item => item.value)) -1;
+
+
+
 
     const sust_score1 =  (((countryData[0]["1990"] - countryData[0]["2031"])) / countryData[0]["1990"]).toFixed(3);
     var sust_score = 0
@@ -144,18 +152,18 @@ function dashboard({ onSwitchPage, onSwitchPage2, countryName, setCountryName })
   <div style={{ flex: 1, marginRight: '20px' }}>
     <div style={{ border: '1px solid #ccc', padding: '10px', backgroundColor: '#ffffff' }}>
       <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '10px' }}>
-        Predicted next 10 years (% forested land)
+      Past Data (% forested land)
       </div>
       
       <LineChart
         width={500}
         height={300}
-        data={futureData}
+        data={pastData}
         margin={{ left: -10 }}>
         <XAxis dataKey="name" />
         <YAxis
-          range={[0, maxVal2]}
-          //ticks={[data[0].value, data[data.length - 1].value]}
+          domain={[pastMin, pastMax]}
+          tickFormatter={(value) => `${value.toFixed(0)}%`}
           axisLine={true}
           tickLine={false}
           
@@ -169,18 +177,18 @@ function dashboard({ onSwitchPage, onSwitchPage2, countryName, setCountryName })
   <div style={{ flex: 1, marginLeft: '20px' }}>
     <div style={{ border: '1px solid #ccc', padding: '10px' , backgroundColor: '#ffffff', }}>
       <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '10px' }}>
-        Past Data (% forested land)
+      Predicted next 10 years (% forested land)
       </div>
       <p>Sustainability Score</p>
       <LineChart
         width={500}
         height={300}
-        data={pastData}
+        data={futureData}
         margin={{ left: -10 }}>
         <XAxis dataKey="name" />
         <YAxis
-          range={[0, maxVal]}
-          //ticks={[data[0].value, data[data.length - 1].value]}
+          domain={[futureMin, futureMax]}
+          tickFormatter={(value) => `${value.toFixed(0)}%`}
           axisLine={true}
           tickLine={false}
           
