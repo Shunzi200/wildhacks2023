@@ -5,10 +5,10 @@ import CircularProgressBar from './CircularProgressBar.js';
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend } from "recharts";
 import TabBar from './tabBar.js'
 import data2 from './wildhacks_data_json.json';
+import percent from './percentile.json';
 
 function dashboard({ onSwitchPage, onSwitchPage2, countryName, setCountryName }) {
-    const sust_score = 75; // to be changed
-    const compare_val = 49; // to be changed
+    
 
       // end of graph data stuff that will be deleted
       // start of new graph data
@@ -16,6 +16,7 @@ function dashboard({ onSwitchPage, onSwitchPage2, countryName, setCountryName })
     const afghanistanData = data2.filter(item => item["Country Name"] == countryName);
     const countryData = afghanistanData.map(item => {
         return {
+            "1990": item["1990 [YR1990]"],
             "2022": item["2022"],
             "2021": item["2021"],
             "2020": item["2020 [YR2020]"],
@@ -69,7 +70,24 @@ function dashboard({ onSwitchPage, onSwitchPage2, countryName, setCountryName })
     const maxVal = Math.max(...futureData.map(item => item.value));
     const maxVal2 = Math.max(...pastData.map(item => item.value));
 
+    const sust_score1 =  (((countryData[0]["1990"] - countryData[0]["2031"])) / countryData[0]["1990"]).toFixed(3);
+    var sust_score = 0
+   if (sust_score1 < 0){
+       sust_score = 60 - (100 * sust_score1);
+   }
+   else{
+       sust_score = 50 - (100 * sust_score1);
+   }
     
+
+   // const compare_val = 49; // to be changed
+
+
+   // Parse the JSON data into a JavaScript object
+   const mystr = countryName;
+   const compare_val = percent[mystr].toFixed(2);
+   console.log(compare_val); 
+   
 
     
       // end of the new data definition
@@ -116,6 +134,7 @@ function dashboard({ onSwitchPage, onSwitchPage2, countryName, setCountryName })
           }}>
             {countryName}
           </h1>
+          <p style={{marginLeft: 0}}>Sustainability Score & Percentile Better than other countries</p>
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <CircularProgressBar value={sust_score} color_opt={'#50C878'}/>
               <CircularProgressBar value={compare_val} color_opt={'#FF0000'} />
@@ -127,6 +146,7 @@ function dashboard({ onSwitchPage, onSwitchPage2, countryName, setCountryName })
       <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '10px' }}>
         Predicted next 10 years (% forested land)
       </div>
+      
       <LineChart
         width={500}
         height={300}
@@ -151,6 +171,7 @@ function dashboard({ onSwitchPage, onSwitchPage2, countryName, setCountryName })
       <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '10px' }}>
         Past Data (% forested land)
       </div>
+      <p>Sustainability Score</p>
       <LineChart
         width={500}
         height={300}
@@ -173,7 +194,6 @@ function dashboard({ onSwitchPage, onSwitchPage2, countryName, setCountryName })
 
 </div>
 </div>
-
   
         </div>
        

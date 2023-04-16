@@ -7,7 +7,7 @@ function CircularProgressBar({ value, color_opt }) {
     <div style={{ width: '270px', height: '270px' ,
      marginLeft: '150px',
      marginRight: '150px',
-     marginTop: '80px',
+     marginTop: '30px',
      marginBottom: '40px'}}>
       <CircularProgressbar
         value={value}
