@@ -8,7 +8,7 @@ function CircularProgressBar({ value, color_opt }) {
      marginLeft: '150px',
      marginRight: '150px',
      marginTop: '80px',
-     marginBottom: '25px'}}>
+     marginBottom: '40px'}}>
       <CircularProgressbar
         value={value}
         text={`${value}%`}

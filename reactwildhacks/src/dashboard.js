@@ -73,23 +73,54 @@ function page1() {
               <CircularProgressBar value={compare_val} color_opt={'#FF0000'} />
         </div>
         
-        <LineChart
-      width={500}
-      height={300}
-      data={data}
-      margin={{ left: -10 }}>
-      <XAxis dataKey="name" />
-      <YAxis
-        ticks={[data[0].value, data[data.length - 1].value]}
-        axisLine={false}
-        tickLine={false}
-      />
-      <Tooltip />
-      <Legend />
-      <Line type="monotone" dataKey="value" stroke="#8884d8" activeDot={{ r: 8 }} />
-    </LineChart>
+        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+  <div style={{ flex: 1, marginRight: '20px' }}>
+    <div style={{ border: '1px solid #ccc', padding: '10px' }}>
+      <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '10px' }}>
+        Predicted
+      </div>
+      <LineChart
+        width={500}
+        height={300}
+        data={data}
+        margin={{ left: -10 }}>
+        <XAxis dataKey="name" />
+        <YAxis
+          ticks={[data[0].value, data[data.length - 1].value]}
+          axisLine={true}
+          tickLine={false}
+        />
+        <Tooltip />
+        <Legend />
+        <Line type="monotone" dataKey="value" stroke="#8884d8" activeDot={{ r: 8 }} />
+      </LineChart>
+    </div>
+  </div>
+  <div style={{ flex: 1, marginLeft: '20px' }}>
+    <div style={{ border: '1px solid #ccc', padding: '10px' }}>
+      <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '10px' }}>
+        Predicted
+      </div>
+      <LineChart
+        width={500}
+        height={300}
+        data={data}
+        margin={{ left: -10 }}>
+        <XAxis dataKey="name" />
+        <YAxis
+          ticks={[data[0].value, data[data.length - 1].value]}
+          axisLine={true}
+          tickLine={false}
+        />
+        <Tooltip />
+        <Legend />
+        <Line type="monotone" dataKey="value" stroke="#8884d8" activeDot={{ r: 8 }} />
+      </LineChart>
+    </div>
+  </div>
+</div>
 
-        
+  
         </div>
       </div>
     );
